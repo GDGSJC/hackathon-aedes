@@ -2,6 +2,7 @@
 
 const
   MongoClient = require('mongodb').MongoClient,
+  mongoUri = 'mongodb://gdg:sjc@ds019470.mlab.com:19470/hackaton',
   express = require('express'),
   router = express.Router(),
 
@@ -11,8 +12,7 @@ const
   ADD = '/team/:team/ocorrencias';
 
 router.get(LIST_ALL, function(req, res, next) {
-  var url = 'mongodb://gdg:sjc@ds019470.mlab.com:19470/hackaton';
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(mongoUri, function(err, db) {
     if (err) {
       res.json(['Connection failure']);
     } else {
