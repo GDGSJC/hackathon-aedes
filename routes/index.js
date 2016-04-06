@@ -1,6 +1,7 @@
 'use strict'
 
 const
+  MongoClient = require('mongodb').MongoClient,
   express = require('express'),
   router = express.Router(),
 
@@ -10,7 +11,15 @@ const
   ADD = '/team/:team/ocorrencias';
 
 router.get(LIST_ALL, function(req, res, next) {
-  res.json([]);
+  var url = 'mongodb://gdg:sjc@ds019470.mlab.com:19470/hackaton';
+  MongoClient.connect(url, function(err, db) {
+    if (err) {
+      res.json(['Connection failure']);
+    } else {
+      res.json(['Connected correctly to server']);
+    }
+    db.close();
+  });
 });
 
 router.get(LIST_BY_TEAM, function(req, res, next) {
