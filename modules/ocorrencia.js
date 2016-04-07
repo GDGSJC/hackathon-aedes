@@ -13,7 +13,9 @@ const
     '2': 'Piscina',
     '3': 'Calha',
     '4': 'Vazos',
-    '5': 'Outro'
+    '5': 'Terreno vazio',
+    '6': 'Casa/Predio abandonado',
+    '7': 'Outro'
   };
 
 function _parse(req) {
