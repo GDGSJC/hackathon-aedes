@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    block content
+      #map
+      script(type='text/javascript', src='/js/index.js')
+      script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC-VDbczYZ-DUGQSCsBjr1CBP-j7cb54ek&callback=initMap', async, defer)
+  
