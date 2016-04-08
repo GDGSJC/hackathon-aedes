@@ -2,6 +2,21 @@
 ##### Hackathon 09/04/2016
 ---
 
+#### Bem-vindo ao primeiro Hackathon realizado pelo GDG São José dos Campos.
+
+O combate ao Aedes Aegypti sem dúvida é um tema importante nos dias atuais, sendo assim o GDG SJC decidiu usar esta oportunidade para unirmos nossas forças nesse combate. Contamos com você e sua equipe para desenvolver um aplicativo que possa identificar lugares com focos do mosquito. Esta API fornece métodos para o seu aplicativo criar ocorrências com informações de localização, descrição, tipo e fotos do local. Com esta app todos nós ganhamos, no entanto, a equipe que se destacar ganhará uma viagem para fazer um tour no escritório do Google em São Paulo!
+
+
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 ### Doc API
 #
 #
