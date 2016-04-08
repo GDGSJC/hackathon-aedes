@@ -82,8 +82,10 @@ response:
 }
 ```
 
-#### Observações
-Tipos de ocorrências
+#### --Observações--
+#
+##### Tipos de ocorrências
+#
 ```sh
 {
     '0': 'Lixo',
@@ -96,7 +98,8 @@ Tipos de ocorrências
     '7': 'Outro'
 }
 ```
-Exemplo de um GET
+##### Exemplo de um GET
+#
 ```sh
 GET - api/ocorrencias/5706b3f8170e6d0300bd583e
 
