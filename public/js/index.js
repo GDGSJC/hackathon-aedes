@@ -2,8 +2,8 @@ var map,
   pinColors = ['8a2be2', 'f6546a', 'ffa500', 'ccff00', 'ffd700', '0099cc', 'c6e2ff', '8b0000', 'f5f5dc', '808080'],
   pinImages = [],
   pinShadow,
-  markers = [];
-
+  markers = [],
+  types = ['Lixo', 'Caixa d\'água', 'Piscina', 'Calha', 'Vazos', 'Terreno vazio', 'Casa/Predio abandonado', 'Outro'];
 
 
 function initMap() {
@@ -65,7 +65,7 @@ function _addMarker(model){
 
   marker.addListener('click', function() {
     new google.maps.InfoWindow({
-      content: model.description
+      content: '<h4>'+types[parseInt(model.type)]+'</h4>' + model.description
     }).open(map, marker);
   });
   map.panTo(marker.position);
