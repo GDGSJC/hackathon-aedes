@@ -62,6 +62,8 @@ response:
 POST - api/ocorrencias/:ocurid/attach
 Content-Type: multipart/form-data
 
+imagem.png
+
 response:
 {
   "status": "OK",
