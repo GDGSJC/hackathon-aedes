@@ -5,6 +5,7 @@ const
   ocorrencia   = require('../modules/ocorrencia'),
   multiparty   = require('multiparty'),
   path         = require('path'),
+  app          = require('../app'),
 
   LIST_ALL     = '/ocorrencias',
   LIST_BY_TEAM = '/ocorrencias/team/:team',
@@ -14,6 +15,7 @@ const
   ATTACH       = '/ocorrencias/:ocurid/attach';
 
 router.get(LIST_ALL, function(req, res, next) {
+
   ocorrencia.query({}).then(function (result) {
     _resOK(res, result);
   }).catch(function (err) {
@@ -38,9 +40,15 @@ router.get(GET_DETAILS, function(req, res, next) {
 });
 
 router.post(ADD, function(req, res, next) {
+
+  let app = require('../app');
   Promise.resolve().then(function () {
     return ocorrencia.parse(req);
   }).then (function (model) {
+
+    // socket emit
+    app.ioSocket.emit('new point', model);
+
     return ocorrencia.add(model);
   }).then(function (result) {
     _resOK(res, result);

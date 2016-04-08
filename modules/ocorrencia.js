@@ -19,10 +19,13 @@ const
   };
 
 function _parse(req) {
+
   let c = req.body.coordinates;
   let t = req.body.type;
   let d = req.body.description;
   let team = req.params.team;
+
+  c = !util.isArray(c) ? JSON.parse(c) : c;
 
   if (!(c && util.isArray(c) && c.length == 2 && util.isNumber(c[0]) && util.isNumber(c[1]))) {
     throw new Error('Parser error (coordinates)');
