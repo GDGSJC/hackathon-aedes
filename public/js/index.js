@@ -63,9 +63,16 @@ function _addMarker(model){
     shadow: pinShadow
   });
 
+  var content = '<h4>' + types[parseInt(model.type)]+'</h4>' + model.description;
+
+  for (var i in model.images){
+
+    content += '<br/><img style="max-width: 240px;" src="http://gdgsjc-hackathon-aedes.herokuapp.com'+model.images[i]+'" />'
+  }
+
   marker.addListener('click', function() {
     new google.maps.InfoWindow({
-      content: '<h4>'+types[parseInt(model.type)]+'</h4>' + model.description
+      content: content
     }).open(map, marker);
   });
   map.panTo(marker.position);
