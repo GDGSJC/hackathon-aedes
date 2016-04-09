@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">HackaDengue</string>
+    <string name="tirar">Tirar foto</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps2">Map</string>
+    <string name="foco">Procurar foco de dengue</string>
+    <string-array name="ocorrencias">
+        <item>Lixo</item>
+        <item>Caixa Dagua</item>
+        <item>Piscina</item>
+        <item>Calha</item>
+        <item>Vasos</item>
+        <item>Terreno Vazio</item>
+        <item>Casa/Prédio abandonado</item>
+        <item>Outros</item>
+    </string-array>
+</resources>
