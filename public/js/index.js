@@ -3,6 +3,7 @@ var map,
   pinImages = [],
   pinShadow,
   markers = [],
+  bounds,
   types = ['Lixo', 'Caixa d\'água', 'Piscina', 'Calha', 'Vazos', 'Terreno vazio', 'Casa/Predio abandonado', 'Outro'];
 
 
@@ -11,6 +12,8 @@ function initMap() {
     center: {lat: -23.1858327, lng: -45.8856327}, // bilac sjc
     zoom: 17
   });
+
+  bounds = new google.maps.LatLngBounds();
 
   /**
    * Google Maps pin colors
@@ -34,7 +37,11 @@ function initMap() {
 /*
  * Socket implementation
  */
-io().on('new point', _addMarker);
+io().on('new point', function(arv){
+  _addMarker(arv);
+
+  map.fitBounds(bounds);
+});
 
 function _getMarkers(){
 
@@ -44,24 +51,30 @@ function _getMarkers(){
         var result = JSON.parse(xmlHttp.responseText).result;
         for (var i in result)
           _addMarker(result[i]);
+
+          map.fitBounds(bounds);
       }
   }
   xmlHttp.open("GET", '/api/ocorrencias', true); // true for asynchronous
   xmlHttp.send(null);
+
 }
 
 function _addMarker(model){
 
+  var pos = new google.maps.LatLng(model.coordinates[1], model.coordinates[0]);
+
   var marker = new google.maps.Marker({
-    position: {
-      lat: model.coordinates[1],
-      lng: model.coordinates[0] },
+    position: pos,
     animation: google.maps.Animation.DROP,
     map: map,
     title: model.description,
     icon: pinImages[parseInt(model.team)],
-    shadow: pinShadow
+    shadow: pinShadow,
+    mode: model
   });
+
+  bounds.extend(pos);
 
   var content = '<h4>' + types[parseInt(model.type)]+'</h4>' + model.description;
 
